@@ -1,0 +1,98 @@
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --accent: #bfff00; /* Neon Lime */
+    --text-muted: #555555;
+    --font-main: 'Syne', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-main);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Overlay de Ruído (UX Texture) */
+.noise-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAS0lEQVRYR+2XMQ4AMAjCwv8/OnRpHZpEwreA5SmA5Xp65p6Z2T8YwIAnwIBfwDNgwDPgwHNgwDNgwHNgwDNgwHNgwDNgwHNgwDNguA9zAgICh5U5AAAAAElFTkSuQmCC');
+    opacity: 0.03; pointer-events: none; z-index: 1000;
+}
+
+.super-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+
+/* Mega Nav */
+.mega-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 30px 40px; border-bottom: 2px solid var(--text);
+    font-family: var(--font-mono);
+}
+.nav-logo { font-weight: 800; font-size: 1.5rem; background: var(--text); color: var(--bg); padding: 5px 10px; }
+.nav-item { text-decoration: none; color: var(--text); margin-right: 20px; font-weight: 600; }
+.btn-print { background: var(--accent); border: 2px solid var(--text); padding: 8px 20px; font-weight: 700; cursor: pointer; }
+
+/* Hero Section */
+.hero-section { padding: 100px 0; border-bottom: 2px solid var(--text); }
+.hero-title {
+    font-size: 8rem; font-weight: 800; line-height: 0.85; letter-spacing: -5px; margin: 0;
+}
+.outline-text {
+    color: var(--bg);
+    -webkit-text-stroke: 2px var(--text);
+}
+.hero-meta {
+    font-family: var(--font-mono); font-size: 1rem; margin-top: 40px;
+    display: flex; gap: 40px; color: var(--text-muted);
+}
+
+/* Mantra Section */
+.mantra-section { background: var(--text); color: var(--bg); padding: 100px 0; }
+.mantra-content { max-width: 900px; margin: 0 auto; text-align: center; }
+.mantra-content h2 { font-size: 3rem; font-weight: 700; line-height: 1.1; margin-bottom: 30px; }
+.mantra-content p { font-family: var(--font-mono); font-size: 1.1rem; opacity: 0.8; line-height: 1.6; }
+
+/* Dual Layout */
+.dual-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 80px; padding: 80px 0; }
+
+.section-label {
+    font-family: var(--font-mono); font-size: 1rem; color: var(--text-muted);
+    text-transform: uppercase; margin-bottom: 50px;
+}
+
+/* Projects styling */
+.project-brick {
+    display: flex; gap: 30px; border-bottom: 1px solid #eee; padding: 40px 0;
+    transition: all 0.3s ease;
+}
+.project-brick:hover { background-color: #fafafa; padding-left: 20px; }
+.project-number { font-size: 2.5rem; font-weight: 800; color: #ddd; font-family: var(--font-mono); }
+.project-info h4 { font-size: 1.8rem; font-weight: 700; margin: 0 0 10px 0; }
+.project-tags { font-family: var(--font-mono); font-size: 0.85rem; background: var(--accent); display: inline-block; padding: 2px 8px; margin-top: 15px; }
+
+/* Skills styling */
+.skill-category { margin-bottom: 40px; }
+.skill-category h5 { font-size: 1.2rem; font-weight: 700; margin-bottom: 15px; color: var(--text); }
+.skill-category ul { list-style: none; padding: 0; font-family: var(--font-mono); font-size: 0.95rem; color: var(--text-muted); }
+.skill-category li { margin-bottom: 8px; position: relative; padding-left: 20px; }
+.skill-category li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+
+/* Footer */
+.mega-footer { background: var(--text); color: var(--bg); padding: 80px 0; font-family: var(--font-mono); }
+.mega-footer a { color: var(--accent); text-decoration: none; font-weight: 700; }
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .hero-title { font-size: 5rem; letter-spacing: -2px; }
+    .dual-layout { grid-template-columns: 1fr; }
+}
+
+@media print {
+    .no-print { display: none; }
+    .super-container { width: 100%; padding: 0; margin: 0; }
+    .hero-title { font-size: 4rem; -webkit-text-stroke: 1px var(--text); }
+    .mantra-section { background: white; color: black; border-bottom: 2px solid black; }
+    .project-brick { page-break-inside: avoid; }
+}
